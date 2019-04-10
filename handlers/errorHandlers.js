@@ -60,7 +60,6 @@ exports.developmentErrors = (err, req, res, next) => {
   });
 };
 
-
 /*
   Production Error Handler
 

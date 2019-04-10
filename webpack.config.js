@@ -14,10 +14,11 @@ const autoprefixer = require('autoprefixer');
 
 // This is our JavaScript rule that specifies what to do with .js files
 const javascript = {
-  test: /\.(js)$/, // see how we match anything that ends in `.js`? Cool
+  test: /\.m?js$/, // see how we match anything that ends in `.js`? Cool
+  exclude: /(node_modules|bower_components)/,
   use: [{
     loader: 'babel-loader',
-    options: { presets: ['es2015'] } // this is one way of passing options
+    options: { presets: ['@babel/preset-env'] } // this is one way of passing options
   }],
 };
 
