@@ -63,11 +63,33 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 2);
+/******/ 	return __webpack_require__(__webpack_require__.s = 3);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+function autocomplete(input, latInput, lngInput) {
+  if (!input) return; // skip this fn from running if there is not input on the page
+
+  var dropdown = new google.maps.places.Autocomplete(input);
+  dropdown.addListener('place_changed', function () {
+    var place = dropdown.getPlace();
+    latInput.value = place.geometry.location.lat();
+    lngInput.value = place.geometry.location.lng();
+  }); // if someone hits enter on the address field, don't submit the form
+
+  input.on('keydown', function (e) {
+    if (e.keyCode === 13) e.preventDefault();
+  });
+}
+
+/* harmony default export */ __webpack_exports__["a"] = autocomplete;
+
+/***/ }),
+/* 1 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -92,48 +114,25 @@ NodeList.prototype.on = NodeList.prototype.addEventListener = function (name, fn
 
 
 /***/ }),
-/* 1 */
+/* 2 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
-/* 2 */
+/* 3 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__sass_style_scss__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__sass_style_scss__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__sass_style_scss___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__sass_style_scss__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__modules_bling__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__modules_autocomplete__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__modules_bling__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__modules_autocomplete__ = __webpack_require__(0);
 
 
 
 __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__modules_autocomplete__["a" /* default */])(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__modules_bling__["a" /* $ */])('#address'), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__modules_bling__["a" /* $ */])('#lat'), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__modules_bling__["a" /* $ */])('#lng'));
-
-/***/ }),
-/* 3 */,
-/* 4 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-function autocomplete(input, latInput, lngInput) {
-  if (!input) return; // skip this fn from running if there is not input on the page
-
-  var dropdown = new google.maps.places.Autocomplete(input);
-  dropdown.addListener('place_changed', function () {
-    var place = dropdown.getPlace();
-    latInput.value = place.geometry.location.lat();
-    lngInput.value = place.geometry.location.lng();
-  }); // if someone hits enter on the address field, don't submit the form
-
-  input.on('keydown', function (e) {
-    if (e.keyCode === 13) e.preventDefault();
-  });
-}
-
-/* harmony default export */ __webpack_exports__["a"] = autocomplete;
 
 /***/ })
 /******/ ]);
